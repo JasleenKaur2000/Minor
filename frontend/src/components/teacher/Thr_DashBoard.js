@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
-function Teacher() {
+const Header = () => {
   return (
-    <div>Thr_DashBoard</div>
-  )
+    <>
+      <h1 style={{color: "red"}}>Hello Style!</h1>
+      <p>Add a little style!</p>
+    </>
+  );
 }
 
-export default Teacher
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Header />);
