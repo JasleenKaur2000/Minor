@@ -1,17 +1,20 @@
 import React from 'react';
 
-
+// export default Login;
+import Get_Current_User from "../../redux/action/Current_User_Action";
 import { Grid, Paper, TextField, Button, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
+import { React, useState, useEffect } from "react";
 import "./Login.css"
 
 
 function Login() {
-  // const [user, setUser] = useState({
-  //   email: "",
-  //   password: "",
-  // });
-  const navigate = useNavigate();
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
   // const dispatch = useDispatch();
 
   // const userLogin = useSelector((state) => state.userLogin);
@@ -31,22 +34,36 @@ function Login() {
   //   }
   // }, [userInfo, navigate]);
 
-  
-  // const submitHandler = (e) => {
-  //   e.preventDefault();
+  // const submitForm = async (userData)=>{
+        
+  //     const makeReq = await fetch("url/login",{
+  //       method:POST,
+  //       body: JSON.stringify(userData);
+  //     });
 
-  //   dispatch(Login(user.email, user.password));
-  //   console.log("Login dispatch");
-  // };
+  //     const response = makeReq.JSON();
+     
+  //      dispatch(Get_Current_User(response.data));
 
 
-  // let name, value;
-  // const handleChange = (e) => {
-  //   console.log(user);
-  //   name = e.target.name;
-  //   value = e.target.value;
-  //   setUser({ ...user, [name]: value });
-  // };
+  // }
+
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    dispatch(Login(user.email, user.password));
+    console.log("Login dispatch");
+  };
+
+
+  let name, value;
+  const handleChange = (e) => {
+    console.log(user);
+    name = e.target.name;
+    value = e.target.value;
+    setUser({ ...user, [name]: value });
+  };
 
   const handleLogin = (e)=>{
     e.preventDefault();
@@ -85,11 +102,11 @@ function Login() {
             <form
               style={{ marginTop: "5vh" }}
               noValidate
-              // onSubmit={submitHandler}
+              onSubmit={submitHandler}
             >
               <Grid>
                 <TextField
-                  // onChange={handleChange}
+                  onChange={handleChange}
                   name="email"
                   label="Email"
                   placeholder="@example.com"
@@ -97,7 +114,7 @@ function Login() {
                   required
                 ></TextField>
                 <TextField
-                  // onChange={handleChange}
+                  onChange={handleChange}
                   name="password"
                   label="Password"
                   sx={{ mt: 2 }}
