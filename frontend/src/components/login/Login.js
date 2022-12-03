@@ -1,7 +1,4 @@
-// import React from 'react'
-// function Login(){
-//   return <>Test</>
-// }
+import React from 'react';
 
 // export default Login;
 import Get_Current_User from "../../redux/action/Current_User_Action";
@@ -10,8 +7,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { React, useState, useEffect } from "react";
 import "./Login.css"
 
-import { useDispatch, useSelector } from "react-redux";
-//import { login } from "../../Actions/userActions";
 
 function Login() {
   const [user, setUser] = useState({
@@ -65,7 +60,7 @@ function Login() {
   let name, value;
   const handleChange = (e) => {
     console.log(user);
-    name = e.t arget.name;
+    name = e.target.name;
     value = e.target.value;
     setUser({ ...user, [name]: value });
   };
@@ -73,11 +68,11 @@ function Login() {
   const handleLogin = (e)=>{
     e.preventDefault();
     navigate("/home")
-    if (   ){
-      navigate("/home");
-    }else{
+    // if (   ){
+    //   navigate("/home");
+    // }else{
 
-    }
+    // }
     
   }
 
