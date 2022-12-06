@@ -1,17 +1,11 @@
-// import React from 'react'
-// function Login(){
-//   return <>Test</>
-// }
+import {React,useState} from 'react';
 
 // export default Login;
 // import Get_Current_User from "../../redux/action/Current_User_Action";
 import { Grid, Paper, TextField, Button, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import { React, useState } from "react";
-import "./Login.css";
+import "../../styles/Login.css";
 
-// import { useDispatch} from "react-redux";
-//import { login } from "../../Actions/userActions";
 
 function Login() {
   const [user, setUser] = useState({
@@ -60,7 +54,7 @@ function Login() {
 
   let name, value;
   const handleChange = (e) => {
-    // console.log(user);
+    console.log(user);
     name = e.target.name;
     value = e.target.value;
     setUser({ ...user, [name]: value });
@@ -68,13 +62,14 @@ function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    navigate("/home");
+    navigate("/home")
     // if (   ){
     //   navigate("/home");
     // }else{
 
     // }
-  };
+    
+  }
 
   const mainContainer = {
     width: "100vw",
