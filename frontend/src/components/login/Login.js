@@ -4,13 +4,13 @@
 // }
 
 // export default Login;
-import Get_Current_User from "../../redux/action/Current_User_Action";
+// import Get_Current_User from "../../redux/action/Current_User_Action";
 import { Grid, Paper, TextField, Button, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import { React, useState, useEffect } from "react";
-import "./Login.css"
+import { React, useState } from "react";
+import "./Login.css";
 
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch} from "react-redux";
 //import { login } from "../../Actions/userActions";
 
 function Login() {
@@ -19,8 +19,7 @@ function Login() {
     password: "",
   });
   // const dispatch = useDispatch();
-  // const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // const userLogin = useSelector((state) => state.userLogin);
   // const { userInfo } = userLogin;
@@ -40,46 +39,42 @@ function Login() {
   // }, [userInfo, navigate]);
 
   // const submitForm = async (userData)=>{
-        
+
   //     const makeReq = await fetch("url/login",{
   //       method:POST,
   //       body: JSON.stringify(userData);
   //     });
 
   //     const response = makeReq.JSON();
-     
+
   //      dispatch(Get_Current_User(response.data));
 
-
   // }
-
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    dispatch(Login(user.email, user.password));
-    console.log("Login dispatch");
+    // dispatch(Login(user.email, user.password));
+    // console.log("Login dispatch");
   };
-
 
   let name, value;
   const handleChange = (e) => {
-    console.log(user);
-    name = e.t arget.name;
+    // console.log(user);
+    name = e.target.name;
     value = e.target.value;
     setUser({ ...user, [name]: value });
   };
 
-  const handleLogin = (e)=>{
+  const handleLogin = (e) => {
     e.preventDefault();
-    navigate("/home")
-    if (   ){
-      navigate("/home");
-    }else{
+    navigate("/home");
+    // if (   ){
+    //   navigate("/home");
+    // }else{
 
-    }
-    
-  }
+    // }
+  };
 
   const mainContainer = {
     width: "100vw",

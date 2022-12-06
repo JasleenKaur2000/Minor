@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import SubjectList from "./SubjectList";
 
-function Student() {
-  return (
-    <div>Std_DashBoard</div>
-  )
+function Student(){
+  return <div>
+    <SubjectList />
+  </div>;
 }
 
-export default Student
+export default Student;
