@@ -120,10 +120,3 @@ function GecInfo() {
     );
 }
 export default GecInfo;
-
-
-
-
-
-
-

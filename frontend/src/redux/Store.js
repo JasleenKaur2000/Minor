@@ -1,10 +1,10 @@
-// import configureStore from "@reduxjs/toolkit";
-// import RootReducer from "./RootReducer";
+import configureStore from "@reduxjs/toolkit";
+import RootReducer from "./RootReducer";
 
-// const Store = configureStore({
-//  reducer:RootReducer
+const store = configureStore({
+ reducer:RootReducer
 
-// });
+});
 
 
-// export default Store;
+export default store;

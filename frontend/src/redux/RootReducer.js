@@ -1,11 +1,9 @@
-import Current_USER_Reducer from "./reducer/Current_User_Reducer";
-import combineReducer from "@reduxjs/toolkit"
+import { combineReducers } from "redux";
+import CurrentUser_Reducer from "./reducers/CurrentUser_Reducer";
 
-const RootReducer = combineReducer({
-
-    Current_USER_Reducer,
-
-
-});
+const RootReducer = combineReducers({
+   CurrentUser_Reducer,
+   
+})
 
 export default RootReducer;
