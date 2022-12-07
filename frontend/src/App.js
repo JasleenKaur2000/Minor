@@ -4,6 +4,8 @@ import Signup from "./components/signup/SignUp";
 import Student from "./components/student/Std_DashBoard";
 import Home from "./components/Home/Home";
 import GecInfo from "./components/teacher/GecInfo/GecInfo";
+import React from "react";
+
 
 function App() {
   return (
