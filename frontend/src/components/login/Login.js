@@ -1,85 +1,31 @@
-// import React from 'react'
-// function Login(){
-//   return <>Test</>
-// }
-
-// export default Login;
-import Get_Current_User from "../../redux/action/Current_User_Action";
+import { React, useEffect, useState } from "react";
 import { Grid, Paper, TextField, Button, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import { React, useState, useEffect } from "react";
-import "./Login.css"
-
+import "../../styles/Login.css";
 import { useDispatch, useSelector } from "react-redux";
-//import { login } from "../../Actions/userActions";
+import { login } from "../../redux/actions/userActions";
 
 function Login() {
-  const [user, setUser] = useState({
-    email: "",
-    password: "",
-  });
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  // const userLogin = useSelector((state) => state.userLogin);
-  // const { userInfo } = userLogin;
-  // const [tabValue, setTabValue] = useState("student");
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
-  // const handleTabChange = (event, newValue) => {
-  //   setTabValue(newValue);
-  //   console.log(newValue);
-  // };
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   if (userInfo) {
-  //     navigate("/signup");
-  //     console.log("LoggedIn");
-  //     console.log(userInfo);
-  //   }
-  // }, [userInfo, navigate]);
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, data } = userLogin;
 
-  // const submitForm = async (userData)=>{
-        
-  //     const makeReq = await fetch("url/login",{
-  //       method:POST,
-  //       body: JSON.stringify(userData);
-  //     });
-
-  //     const response = makeReq.JSON();
-     
-  //      dispatch(Get_Current_User(response.data));
-
-
-  // }
-
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-
-    dispatch(Login(user.email, user.password));
-    console.log("Login dispatch");
-  };
-
-
-  let name, value;
-  const handleChange = (e) => {
-    console.log(user);
-    name = e.t arget.name;
-    value = e.target.value;
-    setUser({ ...user, [name]: value });
-  };
-
-  const handleLogin = (e)=>{
-    e.preventDefault();
-    navigate("/home")
-    if (   ){
+  useEffect(() => {
+    if (data) {
       navigate("/home");
-    }else{
-
     }
-    
-  }
+  }, [navigate, data]);
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    dispatch(login(email, password));
+  };
 
   const mainContainer = {
     width: "100vw",
@@ -103,6 +49,7 @@ function Login() {
           <h1 style={{ margin: "10px", textAlign: "center", color: "#1976d2" }}>
             Login Please{" "}
           </h1>
+
           <Grid>
             <form
               style={{ marginTop: "5vh" }}
@@ -111,7 +58,7 @@ function Login() {
             >
               <Grid>
                 <TextField
-                  onChange={handleChange}
+                  onChange={(e) => setEmail(e.target.value)}
                   name="email"
                   label="Email"
                   placeholder="@example.com"
@@ -119,7 +66,7 @@ function Login() {
                   required
                 ></TextField>
                 <TextField
-                  onChange={handleChange}
+                  onChange={(e) => setPassword(e.target.value)}
                   name="password"
                   label="Password"
                   sx={{ mt: 2 }}
@@ -138,7 +85,6 @@ function Login() {
                 variant="contained"
                 style={btstyle}
                 fullWidth
-                onClick={handleLogin}
               >
                 Login
               </Button>

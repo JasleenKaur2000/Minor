@@ -1,7 +1,6 @@
-import "./gecinfo.css";
-import { useState } from "react";
+import "../../../styles/gecinfo.css";
 import React from 'react'
-import { Fab, Paper, TextField } from "@mui/material";
+import { Paper, TextField } from "@mui/material";
 
 function GecInfo() {
     //take argument and return

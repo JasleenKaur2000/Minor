@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
-function Student() {
-  return (
-    <div>Std_DashBoard</div>
-  )
+function Student(){
+  return <div>
+    Students
+  </div>;
 }
 
-export default Student
+export default Student;

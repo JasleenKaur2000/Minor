@@ -13,7 +13,7 @@ router.post('/', (req, res) => {
         teacherId: teacherId
     }
     Subject.save(tempSubject);
-
+     
 })
 router.get('/', (req, res) => {
     sub = Subject.find();
