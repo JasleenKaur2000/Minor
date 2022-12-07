@@ -8,16 +8,17 @@ const jwt = require('jsonwebtoken');
 const User = require('./models/userModel');
 const routes = require('./routes/userRoutes.js');
 const subjectRoutes = require('./routes/subjectRoutes.js');
-
+const cors = require('cors')
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 
 
 mongoose.connect(process.env.MONGO_DB).then((result) =>
-  app.listen(process.env.PORT, (req, res) => {
+  app.listen(process.env.PORT,"192.168.43.23" ,(req, res) => {
     console.log(`mongo connected, listenning on port: ${PORT}`)
   }))
   .catch((err) => console.log(err, 'mongo not connected'));
