@@ -39,7 +39,7 @@ exports.login = async (req, res, next) => {
      const user = await User.findOne({ userId });
      if (!user) return next(new Error('User does not exist! Please check your userId'));
      const validPassword = await validatePassword(password, user.password);
-     if (!validPassword) return next(new Error('Password is not correct'))
+     if (!validPassword) return next(new Error('Invalid Credential'))
      const accessToken = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1d"
      });

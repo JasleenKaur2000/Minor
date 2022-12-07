@@ -1,4 +1,3 @@
-//import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./components/login/Login";
 import Signup from "./components/signup/SignUp";
@@ -12,16 +11,14 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
-          {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/signup" element={<Signup />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/teacher_dash" element={<Home />} />
+          <Route path="/student_dash" element={<Student />} />
+          <Route path="/admin_dash" element={<Home />} />
           <Route path="/gec-info" element={<GecInfo />} />
-          <Route path="/student" element={<Student />} />
         </Routes>
       </BrowserRouter>
-      {/*<div className="App">
-    <header className="App-header">APPLICATION</header>
-  </div>*/}
+    
     </>
   );
 }
