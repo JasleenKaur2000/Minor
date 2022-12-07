@@ -6,7 +6,6 @@ import {
 import axios from "axios";
 
 export const login = (email, password) => async (dispatch) => {
-
   try {
     dispatch({ type: USER_LOGIN_REQUEST });
     const config = {
@@ -15,13 +14,12 @@ export const login = (email, password) => async (dispatch) => {
       },
     };
     const { data } = await axios.post(
-      "http://10.51.3.61:8000/login",
+      "http://192.168.43.23:8000/login",
       { email, password },
       config
     );
 
     dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
-
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,

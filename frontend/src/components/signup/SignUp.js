@@ -45,8 +45,7 @@ function Signup() {
           config
         );
 
-        
-        localStorage.setItem("userInfo",JSON.stringify(data));
+        localStorage.setItem("userInfo", JSON.stringify(data));
 
         setLoading(false);
       } catch (error) {
@@ -82,7 +81,7 @@ function Signup() {
         <br />
 
         {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
-      {loading && <Loading />}   
+        {loading && <Loading />}
         <form noValidate onSubmit={submitHandler}>
           <Grid
             container

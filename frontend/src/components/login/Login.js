@@ -14,13 +14,13 @@ function Login() {
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
-  const { loading, error, data } = userLogin;
+  const { loading, error, userInfo } = userLogin;
 
   useEffect(() => {
-    if (data) {
+    if (userInfo) {
       navigate("/home");
     }
-  }, [navigate, data]);
+  }, [navigate, userInfo]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
