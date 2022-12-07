@@ -1,4 +1,4 @@
-import "./gecinfo.css";
+import "../../../styles/gecinfo.css";
 import React from 'react'
 import { Paper, TextField } from "@mui/material";
 
