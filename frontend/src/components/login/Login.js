@@ -4,8 +4,8 @@ import React from 'react';
 import Get_Current_User from "../../redux/action/Current_User_Action";
 import { Grid, Paper, TextField, Button, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import { React, useState, useEffect } from "react";
-import "./Login.css"
+import { useState, useEffect } from "react";
+import "../../styles/Login.css"
 
 
 function Login() {
@@ -52,7 +52,7 @@ function Login() {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    dispatch(Login(user.email, user.password));
+   // dispatch(Login(user.email, user.password));
     console.log("Login dispatch");
   };
 
@@ -67,7 +67,7 @@ function Login() {
 
   const handleLogin = (e)=>{
     e.preventDefault();
-    navigate("/home")
+   // navigate("/home")
     // if (   ){
     //   navigate("/home");
     // }else{

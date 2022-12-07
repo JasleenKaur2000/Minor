@@ -1,7 +1,7 @@
 import { Grid, Paper, TextField, Button, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import "./Signup.css";
+import "../../styles/Signup.css";
 import { useDispatch, useSelector } from "react-redux";
 // import { register } from "../../Actions/userActions";
 

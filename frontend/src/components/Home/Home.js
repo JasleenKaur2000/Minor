@@ -1,10 +1,9 @@
 import { Paper } from '@mui/material';
-import "./Home.css"
+import "../../styles/Home.css";
 //import Plus from ../
-import React from 'react'
+import React from 'react';
 import {Add} from '@mui/icons-material';
 import { Link } from 'react-router-dom';
-
 
 function Home() {
     return (
@@ -59,4 +58,4 @@ export default Home;
 
 
 
-<Paper style={{ margin: "20px 10%", padding: "8px" }}></Paper>
+// <Paper style={{ margin: "20px 10%", padding: "8px" }}></Paper>
