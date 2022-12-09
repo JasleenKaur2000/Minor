@@ -24,6 +24,11 @@ const subjectSchema = new mongoose.Schema({
     teacherID: {
         type: String,
         required: true
+    },
+    offeredTo: {
+        type: String,
+        default: 'both',
+        enum: ['ug', 'pg', 'both']
     }
 })
 
