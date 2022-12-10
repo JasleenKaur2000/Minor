@@ -34,6 +34,7 @@ exports.signup = async (req, res, next) => {
 }
 
 exports.login = async (req, res, next) => {
+
   try {
     const { userId, password } = req.body;
     const user = await User.findOne({ userId });
@@ -41,6 +42,7 @@ exports.login = async (req, res, next) => {
     const validPassword = await validatePassword(password, user.password);
     if (!validPassword) return next(new Error('Password is not correct'))
     const accessToken = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+
       expiresIn: "1d"
     });
     await User.findByIdAndUpdate(user._id, { accessToken })
