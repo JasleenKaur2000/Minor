@@ -4,10 +4,14 @@ import Signup from "./components/signup/SignUp";
 import Student from "./components/student/Std_DashBoard";
 import Home from "./components/Home/Home";
 import GecInfo from "./components/teacher/GecInfo/GecInfo";
+
 import Table from "./components/student/Table";
 import Admin from "./components/admin/Admin_DashBoard";
 import AddTeacher from "./components/admin/Add_teacher";
 import AddStudent from "./components/admin/Add_student";
+
+import React from "react";
+
 
 function App() {
   return (
