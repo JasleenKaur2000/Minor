@@ -1,11 +1,15 @@
 const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
-    userId:{
+    userId: {
         type: String,
         required: true
     },
-    userEmail:{
+    userName: {
+        type: String,
+        required: true
+    },
+    userEmail: {
         type: String,
         required: true,
     },
@@ -13,15 +17,25 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    department:{
+    department: {
         type: String,
         required: true
     },
-    admissionYear:{
+    admissionYear: {
         type: Number,
+        required: true
     },
-    program:{
+    program: {
         type: String,
+        required: true
+    },
+    type: {
+        type: String,
+        default: 'ug',
+        enum: ['ug', 'pg']
+    },
+    gecCode: {
+        type: String
     },
     role: {
         type: String,
@@ -31,7 +45,7 @@ const userSchema = new mongoose.Schema({
     accessToken: {
         type: String
     },
-    
+
 })
 
 const User = mongoose.model('user', userSchema)

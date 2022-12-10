@@ -10,6 +10,8 @@ router.post('/signup', userController.signup);
 
 router.post('/login', userController.login);
 
+router.post('/choose-gec', userController.saveGec)
+
 router.get('/user/:userId', userController.getUser);
 
 router.get('/users', userController.getUsers);
