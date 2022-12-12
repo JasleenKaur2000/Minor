@@ -11,7 +11,7 @@ import AddTeacher from "./components/admin/Add_teacher";
 import AddStudent from "./components/admin/Add_student";
 
 import React from "react";
-
+import SubjectList from "./components/student/SubjectList";
 
 function App() {
   return (
@@ -27,7 +27,9 @@ function App() {
           <Route path="/gec-info" element={<GecInfo />} />
           <Route path="/add_teacher" element={<AddTeacher />} />
           <Route path="/add_student" element={<AddStudent />} />
+          
           <Route path="/table" element={<Table />} />
+          <Route path="/subject_list" element={<SubjectList />} />
         </Routes>
       </BrowserRouter>
     </>
