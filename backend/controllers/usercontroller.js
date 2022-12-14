@@ -35,26 +35,26 @@ exports.signup = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
 
-  try {
-    const { userId, password } = req.body;
-    const user = await User.findOne({ userId });
-    if (!user) return next(new Error('User does not exist! Please check your userId'));
-    const validPassword = await validatePassword(password, user.password);
-    if (!validPassword) return next(new Error('Password is not correct'))
-    const accessToken = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-
+    try {
+    console.log(req.body)
+     const { email, password } = req.body;
+     const user = await User.findOne({ userEmail:email });
+     if (!user) return next(new Error('User does not exist! Please check your userId'));
+     const validPassword = await validatePassword(password, user.password);
+     if (!validPassword) return next(new Error('InValid Credential '))
+     const accessToken = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1d"
-    });
-    await User.findByIdAndUpdate(user._id, { accessToken })
-    res.status(200).json({
-      data: { userId: user.userId, role: user.role, department: user.department, program: user.program, admissionYear: user.admissionYear, userEmail: user.userEmail },
-      accessToken
-    })
-  } catch (error) {
-    next(error);
-  }
+     });
+     await User.findByIdAndUpdate(user._id, { accessToken })
+     res.status(200).json({
+      data: { userId: user.userId, role: user.role, department: user.department,program: user.program, admissionYear: user.admissionYear, userEmail: user.userEmail  },
+      token:accessToken,
+      message:"successfully login"
+     })
+    } catch (error) {
+     next(error);
+    }
 }
-
 
 //userRoutes
 
