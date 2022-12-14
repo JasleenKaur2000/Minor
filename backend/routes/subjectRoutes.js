@@ -2,8 +2,11 @@ const express = require('express');
 const router = express.Router();
 const Subject = require('../models/subjectModal.js')
 
+
 router.post('/', (req, res) => {
     const { courseCode, courseName, teacherName, department, syllabus, teacherId, offeredTo } = req.body;
+    console.log(req.body)
+
     const tempSubject = {
         courseCode: courseCode,
         courseName: courseName,
@@ -26,6 +29,7 @@ router.get('/', (req, res) => {
         sub = Subject.find({ $or: [{ offeredTo: 'pg' }, { offeredTo: 'both' }] })
     }
     res.json(sub)
+
 })
 
 module.exports = router;
