@@ -13,12 +13,13 @@ function GecInfo() {
     department: "",
     teacherName: "",
     teacherID: "",
+    offeredTo: "",
   });
 
   const submitGecDetails = async (event) => {
     event.preventDefault();
     axios
-      .post("http://10.10.76.0:8000/subjects", formData)
+      .post("http://10.10.33.21:8000/subjects", formData)
       .then((res) => {
         alert("Data Saved Successfully");
       }) // for successful request
@@ -84,6 +85,12 @@ function GecInfo() {
               onChange={onChangeHandler}
               value={formData.syllabus}
               label="Syllabus"
+            />
+            <TextField
+              name="offeredTo"
+              onChange={onChangeHandler}
+              value={formData.offeredTo}
+              label="ug/pg/both"
             />
 
             <input type="submit" value="submit" />

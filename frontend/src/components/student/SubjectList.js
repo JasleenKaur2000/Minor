@@ -10,7 +10,7 @@ function SubjectList() {
   console.log(dataTable);
 
   useEffect(() => {
-    axios("http://192.168.43.37:8000/subjects")
+    axios("http://10.10.33.21:8000/subjects")
       .then((res) => setDataTable(res.data))
       .catch((err) => console.log(err));
   }, []);

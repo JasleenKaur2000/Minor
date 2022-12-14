@@ -19,7 +19,7 @@ function Login() {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    const makeReq = await fetch(`http://192.168.43.37:8000/login`, {
+    const makeReq = await fetch(`http://10.10.33.21:8000/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

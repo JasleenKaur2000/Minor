@@ -17,8 +17,8 @@ router.post('/', (req, res) => {
         offeredTo: offeredTo
     }
     Subject.save(tempSubject);
-     
 })
+
 router.get('/', (req, res) => {
 
     const { type } = req.body;
