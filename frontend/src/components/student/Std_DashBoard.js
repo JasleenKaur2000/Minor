@@ -5,6 +5,9 @@ import { Paper } from "@mui/material";
 import StudentNav from "./studentNav";
 
 function Student() {
+  let user = JSON.parse(localStorage.getItem("user"));
+  const { id: userId } = user;
+
   return (
     <>
       <StudentNav />
@@ -13,7 +16,7 @@ function Student() {
         <div>
           <Paper elevation={24}>
             <div id="head">
-              <h1 style={{}}>Student Dashboard </h1>
+              <h1 style={{}}>Student Dashboard for {userId} </h1>
             </div>
           </Paper>
         </div>

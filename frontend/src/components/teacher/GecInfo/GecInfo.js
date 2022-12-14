@@ -19,9 +19,10 @@ function GecInfo() {
   const submitGecDetails = async (event) => {
     event.preventDefault();
     axios
-      .post("http://10.10.33.21:8000/subjects", formData)
+      .post("http://192.168.43.37:8000/subjects", formData)
       .then((res) => {
         alert("Data Saved Successfully");
+        console.log(res)
       }) // for successful request
       .catch((err) => console.log("Error occured =>", err.message)); // for failure of request
 

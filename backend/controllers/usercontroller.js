@@ -12,10 +12,12 @@ async function validatePassword(plainPassword, hashedPassword) {
 }
 
 exports.signup = async (req, res, next) => {
+  console.log(req.body)
   try {
     console.log(req.body);
     const {
       userId,
+      userName,
       userEmail,
       password,
       department,
@@ -27,6 +29,7 @@ exports.signup = async (req, res, next) => {
     const hashedPassword = await hashPassword(password);
     const tempobject = {
       userId: userId,
+      userName:userName,
       userEmail: userEmail,
       password: hashedPassword,
       role: role || "student",

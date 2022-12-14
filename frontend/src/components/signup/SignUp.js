@@ -8,12 +8,14 @@ import Loading from "../Loading";
 
 function Signup() {
   const [userId, setUserId] = useState("");
+  const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
   const [department, setDepartment] = useState("");
   const [admissionYear, setAdmissionYear] = useState("");
   const [program, setProgram] = useState("");
   const [role, setRole] = useState("");
+  const [type, setType] = useState("");
   const [error, setError] = useState();
   const [loading, setLoading] = useState();
 
@@ -32,20 +34,23 @@ function Signup() {
         setLoading(true);
 
         const { data } = await axios.post(
-          "http://192.168.43.23:8000/signup",
+          "http://192.168.43.37:8000/signup",
           {
             userId,
+            userName,
             userEmail,
             password,
             department,
             admissionYear,
             program,
             role,
+            type,
           },
           config
         );
 
-        localStorage.setItem("userInfo", JSON.stringify(data));
+        // localStorage.setItem("userInfo", JSON.stringify(data));
+        console.log(data);
 
         setLoading(false);
       } catch (error) {
@@ -102,6 +107,15 @@ function Signup() {
                 required
               ></TextField>
               <TextField
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+                label="userName"
+                name="userName"
+                placeholder="Name"
+                fullWidth
+                required
+              ></TextField>
+              <TextField
                 value={userEmail}
                 onChange={(e) => setUserEmail(e.target.value)}
                 label="userEmail"
@@ -136,7 +150,6 @@ function Signup() {
                 label="Admission Year"
                 sx={{ mt: 2 }}
                 placeholder="Admission Year"
-                type="number"
                 name="admission year"
                 fullWidth
               ></TextField>
@@ -156,6 +169,15 @@ function Signup() {
                 sx={{ mt: 2 }}
                 placeholder="Student/Teacher"
                 name="Role"
+                fullWidth
+              ></TextField>
+              <TextField
+                value={type}
+                onChange={(e) => setType(e.target.value)}
+                label="type"
+                sx={{ mt: 2 }}
+                placeholder="ug/pg/both"
+                name="type"
                 fullWidth
               ></TextField>
             </Grid>

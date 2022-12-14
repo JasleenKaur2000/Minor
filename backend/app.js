@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 mongoose
   .connect(process.env.MONGO_DB)
   .then((result) =>
-    app.listen(process.env.PORT, "10.10.33.21", (req, res) => {
+    app.listen(process.env.PORT, "192.168.43.37", (req, res) => {
       console.log(`mongo connected, listenning on port: ${PORT}`);
     })
   )
