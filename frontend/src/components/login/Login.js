@@ -1,80 +1,54 @@
-import React from 'react';
-
-// export default Login;
-import Get_Current_User from "../../redux/action/Current_User_Action";
+import { React, useState } from "react";
 import { Grid, Paper, TextField, Button, Typography } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
-import { React, useState, useEffect } from "react";
-import "./Login.css"
+import {  Link, useNavigate } from "react-router-dom";
+import "../../styles/Login.css";
+import { useDispatch } from "react-redux";
 
+import {Login_User} from "../../redux/actions/CurrentUser_Action";
 
 function Login() {
-  const [user, setUser] = useState({
-    email: "",
-    password: "",
-  });
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
-  // const dispatch = useDispatch();
+   
 
-  // const userLogin = useSelector((state) => state.userLogin);
-  // const { userInfo } = userLogin;
-  // const [tabValue, setTabValue] = useState("student");
+  // const url = process.env.REACT_APP_SERVER_URL;
 
-  // const handleTabChange = (event, newValue) => {
-  //   setTabValue(newValue);
-  //   console.log(newValue);
-  // };
-
-  // useEffect(() => {
-  //   if (userInfo) {
-  //     navigate("/signup");
-  //     console.log("LoggedIn");
-  //     console.log(userInfo);
-  //   }
-  // }, [userInfo, navigate]);
-
-  // const submitForm = async (userData)=>{
-        
-  //     const makeReq = await fetch("url/login",{
-  //       method:POST,
-  //       body: JSON.stringify(userData);
-  //     });
-
-  //     const response = makeReq.JSON();
-     
-  //      dispatch(Get_Current_User(response.data));
+  const navigate = useNavigate();
 
 
-  // }
+  const dispatch = useDispatch();
 
+ 
+  
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
-  const submitHandler = (e) => {
+ 
+  const submitHandler = async (e) => {
     e.preventDefault();
 
-    dispatch(Login(user.email, user.password));
-    console.log("Login dispatch");
+    const makeReq = await fetch(`http://192.168.43.23:8000/login`,{
+      method:"POST",
+      headers:{
+      "Content-Type":"application/json",
+      },
+      body:JSON.stringify({
+        email,password
+      })
+    });
+
+    const response = await makeReq.json();
+   console.log(response);
+    if(response.message){
+      dispatch(Login_User(response.data));
+
+      if(response.data.role==="student"){
+        navigate("/student_dash");
+      }else if(response.data.role==="teacher"){
+        navigate("/teacher_dash");
+      }else if(response.data.role==="admin"){
+        navigate("/admin_dash");
+      }
+    }
   };
-
-
-  let name, value;
-  const handleChange = (e) => {
-    console.log(user);
-    name = e.target.name;
-    value = e.target.value;
-    setUser({ ...user, [name]: value });
-  };
-
-  const handleLogin = (e)=>{
-    e.preventDefault();
-    navigate("/home")
-    // if (   ){
-    //   navigate("/home");
-    // }else{
-
-    // }
-    
-  }
 
   const mainContainer = {
     width: "100vw",
@@ -98,6 +72,7 @@ function Login() {
           <h1 style={{ margin: "10px", textAlign: "center", color: "#1976d2" }}>
             Login Please{" "}
           </h1>
+
           <Grid>
             <form
               style={{ marginTop: "5vh" }}
@@ -106,7 +81,7 @@ function Login() {
             >
               <Grid>
                 <TextField
-                  onChange={handleChange}
+                  onChange={(e) => setEmail(e.target.value)}
                   name="email"
                   label="Email"
                   placeholder="@example.com"
@@ -114,7 +89,7 @@ function Login() {
                   required
                 ></TextField>
                 <TextField
-                  onChange={handleChange}
+                  onChange={(e) => setPassword(e.target.value)}
                   name="password"
                   label="Password"
                   sx={{ mt: 2 }}
@@ -133,7 +108,6 @@ function Login() {
                 variant="contained"
                 style={btstyle}
                 fullWidth
-                onClick={handleLogin}
               >
                 Login
               </Button>
