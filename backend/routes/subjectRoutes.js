@@ -13,19 +13,26 @@ router.post('/', (req, res) => {
         teacherId: teacherId,
         offeredTo: offeredTo
     }
-    Subject.save(tempSubject);
-     
+    console.log(tempSubject)
+    const SubjectObject = new Subject(tempSubject)
+    SubjectObject.save().then(() => {
+        res.json({
+            data: SubjectObject
+        })
+    });
+
 })
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
 
     const { type } = req.body;
+    let sub;
     if (type == 'ug') {
-        sub = Subject.find({ $or: [{ offeredTo: 'ug' }, { offeredTo: 'both' }] })
+        sub = await Subject.find({ $or: [{ offeredTo: 'ug' }, { offeredTo: 'both' }] })
     }
     else {
-        sub = Subject.find({ $or: [{ offeredTo: 'pg' }, { offeredTo: 'both' }] })
+        sub = await Subject.find({ $or: [{ offeredTo: 'pg' }, { offeredTo: 'both' }] })
     }
-    res.json(sub)
+    res.send(sub)
 })
 
 module.exports = router;

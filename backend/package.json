@@ -1,5 +1,5 @@
 {
-  "name": "attedenceapp",
+  "name": "gecapp",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -19,7 +19,6 @@
     "http-errors": "^2.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.6.5",
-    "morgan": "^1.10.0",
-    "nodemon": "^2.0.20"
+    "morgan": "^1.10.0"
   }
 }

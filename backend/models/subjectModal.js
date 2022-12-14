@@ -2,28 +2,22 @@ const mongoose = require('mongoose')
 
 const subjectSchema = new mongoose.Schema({
     courseCode: {
-        type: String,
-        required: true
+        type: String
     },
     courseName: {
         type: String,
-        required: true,
     },
     syllabus: {
         type: String,
-        required: true,
     },
     department: {
         type: String,
-        required: true,
     },
     teacherName: {
-        type: String,
-        required: true
+        type: String
     },
-    teacherID: {
+    teacherId: {
         type: String,
-        required: true
     },
     offeredTo: {
         type: String,
