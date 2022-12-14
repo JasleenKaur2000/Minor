@@ -6,7 +6,7 @@ import Table from "./Table";
 
 function SubjectList() {
   const [dataTable, setDataTable] = useState([]);
-  //console.log(dataTable);  data in consol
+  console.log(dataTable);  
 
   useEffect(() => {
     axios("https://jsonplaceholder.typicode.com/users")
@@ -15,14 +15,15 @@ function SubjectList() {
   }, []);
 
   const column = [
-    { heading: "SubName" },
-    { heading: "code" },
-    { heading: "ThrName" },
+    { heading: 'Name', value: 'name' },
+    { heading: 'Email', value: 'email' },
+    { heading: 'Phone', value: 'phone' },
   ];
 
   return (
     <div className="stu">
       <h1>Dynamic Table</h1>
+      
       <Table data={dataTable} column={column} />
     </div>
   );
