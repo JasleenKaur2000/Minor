@@ -3,29 +3,35 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "../../styles/Home.css";
 import Table from "./Table";
+import StudentNav from "./studentNav";
 
 function SubjectList() {
   const [dataTable, setDataTable] = useState([]);
-  console.log(dataTable);  
+  console.log(dataTable);
 
   useEffect(() => {
-    axios("https://jsonplaceholder.typicode.com/users")
+    axios("http://192.168.43.37:8000/subjects/get")
       .then((res) => setDataTable(res.data))
       .catch((err) => console.log(err));
   }, []);
 
   const column = [
-    { heading: 'Name', value: 'name' },
-    { heading: 'Email', value: 'email' },
-    { heading: 'Phone', value: 'phone' },
+    { heading: "Course_Code", value: "courseCode" },
+    { heading: "Name", value: "courseName" },
+    { heading: "Syllabus", value: "syllabus" },
+    { heading: "Department", value: "department" },
+    { heading: "Teacher Name", value: "teacherName" },
   ];
 
   return (
-    <div className="stu">
-      <h1>Dynamic Table</h1>
-      
-      <Table data={dataTable} column={column} />
-    </div>
+    <>
+      <StudentNav />
+      <div className="stu">
+        <h1>GEC Table</h1>
+
+        <Table data={dataTable} column={column} />
+      </div>
+    </>
   );
 }
 

@@ -1,8 +1,12 @@
 import React from "react";
 import "../student/student.css";
+import StudentNav from "./studentNav";
 
-function Student_details() {
-  return <>Student_details</>;
+function StudentDetails() {
+  return <>
+  <StudentNav />
+  
+  </>;
 }
 
-export default Student_details;
+export default StudentDetails;
