@@ -31,7 +31,7 @@ mongoose
   .connect(process.env.MONGO_DB)
   .then((result) =>
     app.listen(process.env.PORT, "10.10.76.0", (req, res) => {
-      console.log(`mongo connected, listenning on port: ${PORT}`);
+      console.log(`My Server mongo is connected, listenning on port: ${PORT}`);
     })
   )
   .catch((err) => console.log(err, "Mongo not connected"));
