@@ -1,24 +1,23 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const userController = require('../controllers/userController');
+const userController = require("../controllers/userController");
 
-router.get('/', (req, res) => {
-    res.send('working')
-})
+router.get("/", (req, res) => {
+  res.send("working");
+});
 
-router.post('/signup', userController.signup);
+router.post("/signup", userController.signup);
 
-router.post('/login', userController.login);
+router.post("/login", userController.login);
 
-router.post('/choose-gec', userController.saveGec)
+router.post("/choose-gec", userController.saveGec);
 
-router.get('/user/:userId', userController.getUser);
+router.get("/user/:userId", userController.getUser);
 
-router.get('/users', userController.getUsers);
+router.get("/users", userController.getUsers);
 
-router.put('/user/:userId', userController.updateUser);
+router.put("/user/:userId", userController.updateUser);
 
-router.delete('/user/:userId', userController.deleteUser);
-
+router.delete("/user/:userId", userController.deleteUser);
 
 module.exports = router;

@@ -3,10 +3,14 @@ import "../../styles/Home.css";
 import "../../styles/student.css";
 import { Paper } from "@mui/material";
 import StudentNav from "./studentNav";
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 function Student() {
   let user = JSON.parse(localStorage.getItem("user"));
-  const { id: userId } = user;
+  const { userId, department } = user;
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -25,9 +29,16 @@ function Student() {
           <h2>Select your general elective subject for ongoing semester.</h2>
 
           <br></br>
-          <p>Department:CSE B.Tech</p>
-
-          {/* make it dynamic */}
+          <p>Department:{department}</p>
+          <br></br>
+          <Button
+            onClick={() => {
+              localStorage.removeItem("user");
+              navigate("/");
+            }}
+          >
+            Logout
+          </Button>
 
           <br></br>
         </div>

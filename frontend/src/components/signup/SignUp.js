@@ -1,5 +1,5 @@
-import { Grid, Paper, TextField, Button } from "@mui/material";
-// import { Link, useNavigate } from "react-router-dom";
+import { Grid, Paper, TextField, Button, Typography } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import "../../styles/Signup.css";
 import axios from "axios";
@@ -7,6 +7,7 @@ import ErrorMessage from "../ErrorMessage";
 import Loading from "../Loading";
 
 function Signup() {
+  const navigate = useNavigate();
   const [userId, setUserId] = useState("");
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
@@ -57,6 +58,8 @@ function Signup() {
         setError(error.response.data.message);
       }
     }
+    alert("User created successfully");
+    navigate("/");
   };
 
   const paperStyle = {
@@ -75,6 +78,7 @@ function Signup() {
     placeItems: "center",
     backgroundColor: "#f2fffb",
   };
+  const font = { fontSize: 17 };
 
   return (
     <Grid display="grid" style={mainContainer}>
@@ -191,6 +195,11 @@ function Signup() {
             >
               Sign Up
             </Button>
+          </Grid>
+          <Grid style={{ marginTop: "3vh" }}>
+            <Typography style={font}>
+              Already have an account? <Link to="/"> Login</Link>
+            </Typography>
           </Grid>
         </form>
       </Paper>

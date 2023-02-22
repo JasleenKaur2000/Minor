@@ -32,7 +32,7 @@ function Login() {
 
     const response = await makeReq.json();
     console.log(response);
-    localStorage.setItem("user", response.data);
+    localStorage.setItem("user", JSON.stringify(response.data));
 
     if (response.message) {
       dispatch(Login_User(response.data));
@@ -46,7 +46,6 @@ function Login() {
       }
     }
   };
-
 
   const mainContainer = {
     width: "100vw",

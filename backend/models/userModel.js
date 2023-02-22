@@ -36,6 +36,7 @@ const userSchema = new mongoose.Schema({
   },
   gecCode: {
     type: String,
+    default:null
   },
   role: {
     type: String,

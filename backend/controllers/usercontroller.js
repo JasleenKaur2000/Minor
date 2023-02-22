@@ -12,7 +12,7 @@ async function validatePassword(plainPassword, hashedPassword) {
 }
 
 exports.signup = async (req, res, next) => {
-  console.log(req.body)
+  console.log(req.body);
   try {
     console.log(req.body);
     const {
@@ -29,7 +29,7 @@ exports.signup = async (req, res, next) => {
     const hashedPassword = await hashPassword(password);
     const tempobject = {
       userId: userId,
-      userName:userName,
+      userName: userName,
       userEmail: userEmail,
       password: hashedPassword,
       role: role || "student",
@@ -73,6 +73,7 @@ exports.login = async (req, res, next) => {
     res.status(200).json({
       data: {
         userId: user.userId,
+        userName: user.userName,
         role: user.role,
         department: user.department,
         program: user.program,
@@ -176,8 +177,19 @@ exports.allowIfLoggedin = async (req, res, next) => {
 exports.saveGec = async (req, res, next) => {
   try {
     const { userId, gecCode } = req.body;
-    User.find({ userId: userId }).update({ gecCode: gecCode });
-    next();
+    console.log(gecCode);
+
+    const uss = User.findOneAndUpdate(
+      { userId: userId },
+      { $set: { gecCode: gecCode } },{new: true},
+      function (err, doc) {
+        if (err) {
+          throw err;
+        }
+        console.log(doc);
+      }
+    );
+    res.json("updated");
   } catch (error) {
     next(error);
   }

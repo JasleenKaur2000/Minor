@@ -3,8 +3,10 @@ import { useState } from "react";
 import React from "react";
 import axios from "axios";
 import { Paper, TextField } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function GecInfo() {
+  const navigate = useNavigate();
   //take argument and return
   const [formData, setFormData] = useState({
     courseCode: "",
@@ -22,9 +24,12 @@ function GecInfo() {
       .post("http://192.168.43.37:8000/subjects", formData)
       .then((res) => {
         alert("Data Saved Successfully");
-        console.log(res)
+        console.log(res);
+        navigate("/teacher_dash");
       }) // for successful request
-      .catch((err) => console.log("Error occured =>", err.message)); // for failure of request
+      .catch((err) => console.log("Error occured =>", err.message));
+
+    // for failure of request
 
     // to get all subjects from backend
     // to get and organize data of get request read map() in js

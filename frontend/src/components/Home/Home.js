@@ -3,9 +3,11 @@ import "../../styles/Home.css";
 //import Plus from ../
 import React from "react";
 import { Add } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 function Home() {
+  const navigate = useNavigate();
   return (
     <>
       <div>
@@ -25,7 +27,16 @@ function Home() {
           <p>Department:CSE B.Tech</p>
 
           <br></br>
+          <Button
+            onClick={() => {
+              localStorage.removeItem("user");
+              navigate("/");
+            }}
+          >
+            Logout
+          </Button>
 
+          <br></br>
           <Paper
             className="plus"
             style={{

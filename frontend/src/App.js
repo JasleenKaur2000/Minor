@@ -12,8 +12,10 @@ import AddStudent from "./components/admin/Add_student";
 
 import React from "react";
 import SubjectList from "./components/student/SubjectList";
+import SubjectTable from "./components/student/SubjectTable";
 import StudentDetails from "./components/student/StudentDetails";
 import StudentNav from "./components/student/studentNav";
+import SubjectDisplay from "./components/student/SubjectDisplay";
 
 function App() {
   return (
@@ -33,7 +35,9 @@ function App() {
           <Route path="/table" element={<Table />} />
           <Route path="/student_nav" element={<StudentNav />} />
           <Route path="/subject_list" element={<SubjectList />} />
+          <Route path="/subject_table" element={<SubjectTable />} />
           <Route path="/student_details" element={<StudentDetails />} />
+          <Route path="/subject_display" element={<SubjectDisplay />} />
         </Routes>
       </BrowserRouter>
     </>

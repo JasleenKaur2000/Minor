@@ -5,26 +5,37 @@ import StudentNav from "./studentNav";
 import axios from "axios";
 
 function StudentDetails() {
-  const [userData, setUserData] = useState([]);
+  const [userData, getUserData] = useState('');
 
-  // const loggedInUser = localStorage.getItem("user");
-  // const Id = loggedInUser.userId;
+  let user = JSON.parse(localStorage.getItem("user"));
+  const { userId } = user;
 
   useEffect(() => {
     axios
-      .get("http://192.168.43.37:8000/user")
+      .get(`http://192.168.43.37:8000/user/${userId}`)
       .then((res) => {
-        console.log(res);
+        const subject = res.data.data[0].gecCode;
+        getUserData(subject);
       })
       .catch((err) => {
         console.log(err);
       });
-  });
+  }, [userId]);
+
+  //make below components get data from backend
+
   return (
     <>
       <StudentNav />
       StudentDetails
-      <div></div>
+      <div>
+        <ul>
+          <li>{userId}</li>
+          <li>{user.userName}</li>
+          <li>{user.userEmail}</li>
+          <li>Your GEC is {userData}</li>
+        </ul>
+      </div>
     </>
   );
 }
