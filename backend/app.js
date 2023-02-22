@@ -30,7 +30,7 @@ app.use(morgan('dev'))
 mongoose
   .connect(process.env.MONGO_DB)
   .then((result) =>
-    app.listen(process.env.PORT, "10.10.76.0", (req, res) => {
+    app.listen(process.env.PORT, "localhost", (req, res) => {
       console.log(`mongo connected, listenning on port: ${PORT}`);
     })
   )
